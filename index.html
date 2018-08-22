@@ -1,0 +1,19 @@
+<video height="100" width="100"></video>
+
+<button>start</button>
+
+<script>
+
+  var video = document.querySelector('video');
+  var button = document.querySelector('button');
+
+  if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+    navigator.mediaDevices.getUserMedia({ video: true, audio: true })
+      .then(function(stream) {
+        video.src = window.URL.createObjectURL(stream);
+      });
+
+    button.addEventListener('click', function() { video.play(); });
+  }
+
+</script>
